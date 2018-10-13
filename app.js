@@ -18,10 +18,15 @@ app.get("/results", function (req, res) {
         var data = JSON.parse(body);
 
         if(!error && response.statusCode === 200) {
-            res.render("results",{
-                data:data, 
-                word: wordToSearch
-            })
+            if(data.length === 0){
+                res.send("No results found")
+            } else {
+                res.render("results", {
+                    data: data,
+                    word: wordToSearch
+                });
+            }
+            
         } else {
             console.log("error: ", error);
         }
