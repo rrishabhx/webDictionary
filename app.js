@@ -5,7 +5,6 @@ var express = require("express"),
 
 app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 8080);
-app.set("ip", process.env.IP || "localhost");
 app.use(express.static(__dirname + "/public"));
 
 //Root route
@@ -79,6 +78,6 @@ app.get("/results", function(req, res) {
 
 });
 
-app.listen(app.get("port"), app.get("ip"), function() {
-    console.log("Online dictionary application started on IP-PORT: ", app.get("ip"), app.get("port"));
+app.listen(app.get("port"), function() {
+    console.log("Online dictionary application started on IP-PORT:", app.get("port"));
 });
