@@ -4,6 +4,8 @@ var express = require("express"),
     API_KEY = "da4254d7814a3d40182b22afc4f8a7e5862367bd63716f28a";
 
 app.set("view engine", "ejs");
+app.set("port", process.env.PORT || 8080);
+app.set("ip", process.env.IP || "localhost");
 app.use(express.static(__dirname + "/public"));
 
 //Root route
@@ -77,6 +79,6 @@ app.get("/results", function(req, res) {
 
 });
 
-app.listen(process.env.PORT || 8080, process.env.IP || "localhost", function() {
-    console.log("Online dictionary application started...");
+app.listen(app.get("port"), app.get("ip"), function() {
+    console.log("Online dictionary application started on IP-PORT: ", app.get("ip"), app.get("port"));
 });
