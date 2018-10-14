@@ -27,7 +27,7 @@ app.get("/", function(req, res) {
 
 //Results route
 app.get("/results", function(req, res) {
-    var wordToSearch = req.query.word;
+    var wordToSearch = req.query.word.toLowerCase();
     console.log("Word to search = " + wordToSearch);
     var resultsJson = {};
     var urlDef = "https://api.wordnik.com/v4/word.json/" + wordToSearch +
