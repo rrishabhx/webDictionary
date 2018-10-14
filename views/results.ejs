@@ -1,9 +1,26 @@
-<h1>Results Page</h1>
-<h2><%= word %></h2>
-<% data.forEach(function(result) { %>
-    <li>
-        <%= result.text %>
-    </li>
-<% }); %>
+<% include partials/header %>
 
-<a></a>
+<div>
+    <h2 id="word"><%= resultsJson.word %></h2>
+    <h4>Definitions:</h4>
+    <% resultsJson["definitions"].forEach(function(definition) { %>
+        <div class="alert alert-info">
+            <li>
+                <%= definition.text %>
+            </li>
+        </div>
+    <% }); %>
+
+    <h4>Examples:</h4>
+    <% resultsJson.examples.forEach(function(example) { %>
+        <div class="alert alert-success">
+            <li>
+                <%= example.text %>
+            </li>
+        </div>
+    <% }); %>
+
+</div>
+
+
+<% include partials/footer %>

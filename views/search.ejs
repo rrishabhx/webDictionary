@@ -1,6 +1,23 @@
-<h1>Welcome to simple online dictionary</h1>
+<% include partials/header %>
+    <div>
+        <h2>Word of the Day: <span id="word"><%= data.word %></span></h2>
+        <h4>Definitions:</h4>
+        <% data["definitions"].forEach(function(definition) { %>
+            <div class="alert alert-info">
+                <li>
+                    <%= definition.text %>
+                </li>
+            </div>
+        <% }); %>
+        <h4>Examples:</h4>
+        <% data["examples"].forEach(function(example) { %>
+            <div class="alert alert-success">
+                <li>
+                    <%= example.text %>
+                </li>
+            </div>
+        <% }); %>
+    </div>
+<!-- </div> -->
 
-<form action="/results" method="GET">
-    <input type="text" placeholder="Search word" name="word" required>
-    <button>Submit</button>
-</form>
+<% include partials/footer %>
